@@ -1,0 +1,88 @@
+---
+title       : Developing Data Products Class Project
+subtitle    : Predicting Child Heights Using Galton Data
+author      : Michael Green
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Predict Child Height Using the Galton Dataset
+
+1. Edit YAML front matter
+2. Write using R Markdown
+3. Use an empty line followed by three dashes to separate slides!
+
+--- .class #id 
+
+## Plot
+
+```{r echo=FALSE,simple-plot1, fig.height = 8, fig.align = 'center', message = F}
+library(ggplot2)
+library(HistData)
+g <- ggplot(Galton,aes(parent,child))
+
+g + geom_point() + geom_smooth()
+
+#plot(Galton$child ~ Galton$parent)
+#abline(lm(child ~ parent,data=Galton))
+```
+
+
+---
+
+
+
+## Plot 2
+
+```{r echo=FALSE,simple-plot2, fig.height = 6, fig.align = 'center', message = F}
+library(HistData)
+
+plot(Galton$child ~ Galton$parent)
+abline(lm(child ~ parent,data=Galton))
+
+```
+
+---
+
+## Test Slide 2
+
+This is test slide 2
+
+---
+
+## Using Regression on Galton to get Prediction
+
+```{r echo=TRUE}
+
+lm(Galton$child ~ Galton$parent)
+
+
+```
+```{r echo=FALSE, simple-plot3, fig.height = 4, fig.align = 'center', message = F}
+
+plot(Galton$child ~ Galton$parent,main="Galton Regression",xlab="Parent",ylab="Child")
+abline(lm(child ~ parent,data=Galton))
+
+```
+---
+
+## plot 4
+Lets create a simple plot
+
+```r
+require(ggplot2)
+qplot(parent, child, data = Galton)
+```
+![plot of chunk simple-plot](figure/simple-plot.png) 
+---
+
+
+
+
+
+

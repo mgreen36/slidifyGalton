@@ -17,7 +17,7 @@ knit        : slidify::knit2slides
 ## Overview
 
 
-- The Child Height Predictor Shiny App allows users to get a prediction of a child's height based on the height of the child's parents.
+- The Child Height Predictor Shiny App <a href="https://mgreen70.shinyapps.io/ChildHeightPredictor">https://mgreen70.shinyapps.io/ChildHeightPredictor</a> allows users to get a prediction of a child's height based on the height of the child's parents.
 
 
 - The app is based on Francis Galton's famous study of child heights in the 1880's.

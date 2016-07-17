@@ -26,7 +26,7 @@ knit        : slidify::knit2slides
 - The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
 in statistics including the discovery of the regression to the mean.
 
-- <a href="http://www.yahoo.com">More info about the Galton project</a>
+- <a href="https://select-statistics.co.uk/blog/regression-to-the-mean-as-relevant-today-as-it-was-in-the-1900s">More info about the Galton project</a>
 
 --- .class #id1
 

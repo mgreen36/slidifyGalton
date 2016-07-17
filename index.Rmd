@@ -66,11 +66,11 @@ summary(Galton)
 ## Using the App
 - The app's sidepanel has fields to enter the father's height, the mother's height and the child's sex. All heights are in inches.
 
-- The results panel shows the the calculated mid-parent height and the predicted child's height.
-
 - The user can change the parents heights using a slider for the mother's height and a slider for the father's height.
 
 - The child's sex is entered via a dropdown box.
+
+- The results panel shows the the calculated mid-parent height and the predicted child's height.
 
 - The sliders and the dropdown box are reactive fields in shiny. Changes to any of these fields are immediately reflected in the results data.
 
@@ -84,8 +84,8 @@ A child's predicted height is the intercept + the slope * the mid-parent height.
 
 <style type='text/css'>
 img {
-    max-height: 460px;
-    max-width: 764px;
+    max-height: 560px;
+    max-width: 864px;
 }
 </style>
 

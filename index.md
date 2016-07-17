@@ -94,8 +94,8 @@ A child's predicted height is the intercept + the slope * the mid-parent height.
 
 <style type='text/css'>
 img {
-    max-height: 560px;
-    max-width: 864px;
+    max-height: 760px;
+    max-width: 960px;
 }
 </style>
 

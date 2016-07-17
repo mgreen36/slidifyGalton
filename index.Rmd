@@ -97,7 +97,7 @@ lm(Galton$child ~ Galton$parent)
 ```
 
 
-```{r echo=FALSE,simple-plot1, fig.width= 4,fig.height = 4, fig.align = 'center'}
+```{r echo=FALSE,simple-plot1, fig.width= 6,fig.height = 5, fig.align = 'center'}
 library(ggplot2)
 
 g <- ggplot(Galton,aes(parent,child))

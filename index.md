@@ -20,17 +20,19 @@ knit        : slidify::knit2slides
 - The Child Height Predictor Shiny App allows users to get a prediction of a child's height based on the height of the child's parents.
 
 
-- The app uses the Galton dataset from the HistData package.
+- The app is based on Francis Galton's famous study of child heights in the 1880's.
 
 
-- The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
-in statistics including the discovery of the regression to the mean.
+- Galton's height study made milestone breakthroughs
+in statistics including the development of the idea of the regression to the mean.
 
-- <a href="https://select-statistics.co.uk/blog/regression-to-the-mean-as-relevant-today-as-it-was-in-the-1900s">More info about the Galton project</a>
+- <a href="https://select-statistics.co.uk/blog/regression-to-the-mean-as-relevant-today-as-it-was-in-the-1900s">More info about Galton's study</a>
 
 --- .class #id1
 
 ## The Data
+
+- The app is using the Galton dataset from HistData.
 
 - The dataset consists of 928 rows of child and parent heights.
 
@@ -92,7 +94,7 @@ A child's predicted height is the intercept + the slope * the mid-parent height.
 
 <style type='text/css'>
 img {
-    max-height: 360px;
+    max-height: 460px;
     max-width: 764px;
 }
 </style>

@@ -57,16 +57,21 @@ pre {
 
 <h2>Overview</h2>
 
-<p><br/>
-The Child Height Predictor App allows users to input parents heights to get a prediction
+<p><br/></p>
+
+<ul>
+<li><p>The Child Height Predictor App allows users to input parents heights to get a prediction
 of a child&#39;s fully grown height.<br/>
-<br/></p>
+<br/></p></li>
+<li><p>The app uses the Galton dataset from the HistData package.</p></li>
+</ul>
 
-<p>The app uses the Galton dataset from the HistData package.</p>
+<p><br/></p>
 
-<p><br/>
-The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
-in statistics including the discovery of the regression to the mean.</p>
+<ul>
+<li>The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
+in statistics including the discovery of the regression to the mean.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -77,11 +82,12 @@ in statistics including the discovery of the regression to the mean.</p>
     <h2>The Data</h2>
   </hgroup>
   <article data-timings="">
-    <p>The dataset consists of 928 rows of child and parent heights.</p>
-
-<p>The parents height is the mid-parent height which is the father&#39;s height plus the mother&#39;s height multiplied by 1.08.</p>
-
-<p>Galton multiplied female heights by 1.08. This includes the calcultion of the mid-parent height and in recording female children&#39;s heights.</p>
+    <ul>
+<li><p>The dataset consists of 928 rows of child and parent heights.</p></li>
+<li><p>Galton multiplied female heights by 1.08. </p></li>
+<li><p>The heights of female children were multiplied by 1.08.</p></li>
+<li><p>The parents height in the dataset is the mid-parent height which is the father&#39;s height plus the mother&#39;s height multiplied by 1.08.</p></li>
+</ul>
 
 <pre><code class="r">library(HistData)
 summary(Galton)
@@ -105,18 +111,16 @@ summary(Galton)
     <h2>Using the App</h2>
   </hgroup>
   <article data-timings="">
-    <p>The user can change the parents heights using a slider for the mother&#39;s height and a slider for the father&#39;s height.</p>
-
-<p>The child&#39;s sex is entered via a dropdown box.</p>
-
-<p>The results panel shows the the calculated mid-parent height and the predicted child&#39;s height.</p>
-
-<p>The mid-parent height is calulated as the father&#39;s height + the mother&#39;s height * 1.08.</p>
-
-<p>The child&#39;s height is calculated using a regression model. 
-A child&#39;s predicted height is the intercept + the slope * the mid-parent height.</p>
-
-<p>For female children the result is divided by 1.08</p>
+    <ul>
+<li><p>The app&#39;s sidepanel has fields to enter the father&#39;s height, the mother&#39;s height and the child&#39;s sex. All heights are in inches.</p></li>
+<li><p>The results panel shows the the calculated mid-parent height and the predicted child&#39;s height.</p></li>
+<li><p>The user can change the parents heights using a slider for the mother&#39;s height and a slider for the father&#39;s height.</p></li>
+<li><p>The child&#39;s sex is entered via a dropdown box.</p></li>
+<li><p>The sliders and the dropdown box are reactive fields in shiny. Changes to any of these fields are immediately reflected in the results data.</p></li>
+<li><p>The mid-parent height is the father&#39;s height + the mother&#39;s height * 1.08.</p></li>
+<li><p>The child&#39;s height is calculated using a regression model. 
+A child&#39;s predicted height is the intercept + the slope * the mid-parent height.For female children the result is divided by 1.08</p></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -124,12 +128,21 @@ A child&#39;s predicted height is the intercept + the slope * the mid-parent hei
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Regression on Galton to get Prediction</h2>
+    <h2>Regression Plot</h2>
   </hgroup>
   <article data-timings="">
-    <p><font size="4"></p>
+    <p><img src="assets/fig/simple-plot1-1.png" title="plot of chunk simple-plot1" alt="plot of chunk simple-plot1" style="display: block; margin: auto auto auto 0;" /></p>
 
-<pre><code class="r">modelFit &lt;- lm(Galton$child ~ Galton$parent)
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Regression Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">modelFit &lt;- lm(Galton$child ~ Galton$parent)
 summary(modelFit) 
 </code></pre>
 
@@ -153,35 +166,11 @@ summary(modelFit)
 ## F-statistic: 246.8 on 1 and 926 DF,  p-value: &lt; 2.2e-16
 </code></pre>
 
-<p></font></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>Regression Plot</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/fig/simple-plot1-1.png" title="plot of chunk simple-plot1" alt="plot of chunk simple-plot1" style="display: block; margin: auto;" /></p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>Plot 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/fig/simple-plot2-1.png" title="plot of chunk simple-plot2" alt="plot of chunk simple-plot2" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
   <article data-timings="">
     
   </article>
@@ -212,26 +201,20 @@ summary(modelFit)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Regression on Galton to get Prediction'>
+        data-slide=4 title='Regression Plot'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Regression Plot'>
+        data-slide=5 title='Regression Model'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Plot 2'>
+        data-slide=6 title='NA'>
          6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='NA'>
-         7
       </a>
     </li>
   </ul>

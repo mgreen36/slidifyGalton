@@ -25,25 +25,29 @@ pre {
 
 ## Overview
 <br/>
-The Child Height Predictor App allows users to input parents heights to get a prediction
+- The Child Height Predictor App allows users to input parents heights to get a prediction
 of a child's fully grown height.<br/>
 <br/>
 
-The app uses the Galton dataset from the HistData package.
+- The app uses the Galton dataset from the HistData package.
 
 <br/>
-The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
+- The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
 in statistics including the discovery of the regression to the mean.
 
 ---
 
 ## The Data
 
-The dataset consists of 928 rows of child and parent heights.
+- The dataset consists of 928 rows of child and parent heights.
 
-The parents height is the mid-parent height which is the father's height plus the mother's height multiplied by 1.08.
+- Galton multiplied female heights by 1.08. 
 
-Galton multiplied female heights by 1.08. This includes the calcultion of the mid-parent height and in recording female children's heights.
+- The heights of female children were multiplied by 1.08.
+
+- The parents height in the dataset is the mid-parent height which is the father's height plus the mother's height multiplied by 1.08.
+
+
 
 
 ```r
@@ -64,25 +68,39 @@ summary(Galton)
 ---
 
 ## Using the App
+- The app's sidepanel has fields to enter the father's height, the mother's height and the child's sex. All heights are in inches.
 
-The user can change the parents heights using a slider for the mother's height and a slider for the father's height.
+- The results panel shows the the calculated mid-parent height and the predicted child's height.
 
-The child's sex is entered via a dropdown box.
+- The user can change the parents heights using a slider for the mother's height and a slider for the father's height.
 
-The results panel shows the the calculated mid-parent height and the predicted child's height.
+- The child's sex is entered via a dropdown box.
 
-The mid-parent height is calulated as the father's height + the mother's height * 1.08.
+- The sliders and the dropdown box are reactive fields in shiny. Changes to any of these fields are immediately reflected in the results data.
 
-The child's height is calculated using a regression model. 
-A child's predicted height is the intercept + the slope * the mid-parent height.
+- The mid-parent height is the father's height + the mother's height * 1.08.
 
-For female children the result is divided by 1.08
+- The child's height is calculated using a regression model. 
+A child's predicted height is the intercept + the slope * the mid-parent height.For female children the result is divided by 1.08
+
 
 ---
 
-## Regression on Galton to get Prediction
+## Regression Plot
 
-<font size="4">
+
+<img src="assets/fig/simple-plot1-1.png" title="plot of chunk simple-plot1" alt="plot of chunk simple-plot1" style="display: block; margin: auto auto auto 0;" />
+
+***
+
+<img src="assets/fig/simple-plot2-1.png" title="plot of chunk simple-plot2" alt="plot of chunk simple-plot2" style="display: block; margin: auto 0 auto auto;" />
+
+---
+
+
+## Regression Model
+
+
 
 ```r
 modelFit <- lm(Galton$child ~ Galton$parent)
@@ -110,21 +128,4 @@ summary(modelFit)
 ## F-statistic: 246.8 on 1 and 926 DF,  p-value: < 2.2e-16
 ```
 
-</font>
-
 ---
-
-
-## Regression Plot
-
-<img src="assets/fig/simple-plot1-1.png" title="plot of chunk simple-plot1" alt="plot of chunk simple-plot1" style="display: block; margin: auto;" />
-
----
-
-
-## Plot 2
-
-<img src="assets/fig/simple-plot2-1.png" title="plot of chunk simple-plot2" alt="plot of chunk simple-plot2" style="display: block; margin: auto;" />
-
----
-

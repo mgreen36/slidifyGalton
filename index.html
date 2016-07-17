@@ -42,23 +42,126 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Predict Child Height Using the Galton Dataset</h2>
-  </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <style type="text/css">
+body, td {
+   font-size: 14px;
+}
+code.r{
+  font-size: 14px;
+}
+pre {
+  font-size: 16px
+}
+</style>
+
+<h2>Overview</h2>
+
+<p><br/>
+The Child Height Predictor App allows users to input parents heights to get a prediction
+of a child&#39;s fully grown height.<br/>
+<br/></p>
+
+<p>The app uses the Galton dataset from the HistData package.</p>
+
+<p><br/>
+The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
+in statistics including the discovery of the regression to the mean.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Plot</h2>
+    <h2>The Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The dataset consists of 928 rows of child and parent heights.</p>
+
+<p>The parents height is the mid-parent height which is the father&#39;s height plus the mother&#39;s height multiplied by 1.08.</p>
+
+<p>Galton multiplied female heights by 1.08. This includes the calcultion of the mid-parent height and in recording female children&#39;s heights.</p>
+
+<pre><code class="r">library(HistData)
+summary(Galton)
+</code></pre>
+
+<pre><code>##      parent          child      
+##  Min.   :64.00   Min.   :61.70  
+##  1st Qu.:67.50   1st Qu.:66.20  
+##  Median :68.50   Median :68.20  
+##  Mean   :68.31   Mean   :68.09  
+##  3rd Qu.:69.50   3rd Qu.:70.20  
+##  Max.   :73.00   Max.   :73.70
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Using the App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The user can change the parents heights using a slider for the mother&#39;s height and a slider for the father&#39;s height.</p>
+
+<p>The child&#39;s sex is entered via a dropdown box.</p>
+
+<p>The results panel shows the the calculated mid-parent height and the predicted child&#39;s height.</p>
+
+<p>The mid-parent height is calulated as the father&#39;s height + the mother&#39;s height * 1.08.</p>
+
+<p>The child&#39;s height is calculated using a regression model. 
+A child&#39;s predicted height is the intercept + the slope * the mid-parent height.</p>
+
+<p>For female children the result is divided by 1.08</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Regression on Galton to get Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><font size="4"></p>
+
+<pre><code class="r">modelFit &lt;- lm(Galton$child ~ Galton$parent)
+summary(modelFit) 
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = Galton$child ~ Galton$parent)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.8050 -1.3661  0.0487  1.6339  5.9264 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   23.94153    2.81088   8.517   &lt;2e-16 ***
+## Galton$parent  0.64629    0.04114  15.711   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.239 on 926 degrees of freedom
+## Multiple R-squared:  0.2105, Adjusted R-squared:  0.2096 
+## F-statistic: 246.8 on 1 and 926 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p></font></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Regression Plot</h2>
   </hgroup>
   <article data-timings="">
     <p><img src="assets/fig/simple-plot1-1.png" title="plot of chunk simple-plot1" alt="plot of chunk simple-plot1" style="display: block; margin: auto;" /></p>
@@ -67,7 +170,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Plot 2</h2>
   </hgroup>
@@ -78,46 +181,9 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>Test Slide 2</h2>
-  </hgroup>
+<slide class="" id="slide-7" style="background:;">
   <article data-timings="">
-    <p>This is test slide 2</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>Using Regression on Galton to get Prediction</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">lm(Galton$child ~ Galton$parent)
-</code></pre>
-
-<pre><code>## 
-## Call:
-## lm(formula = Galton$child ~ Galton$parent)
-## 
-## Coefficients:
-##   (Intercept)  Galton$parent  
-##       23.9415         0.6463
-</code></pre>
-
-<h2><img src="assets/fig/simple-plot3-1.png" title="plot of chunk simple-plot3" alt="plot of chunk simple-plot3" style="display: block; margin: auto;" /></h2>
-
-<h2>plot 4</h2>
-
-<p>Lets create a simple plot</p>
-
-<pre><code class="r">require(ggplot2)
-qplot(parent, child, data = Galton)
-</code></pre>
-
-<h2><img src="figure/simple-plot.png" alt="plot of chunk simple-plot"> </h2>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -128,32 +194,44 @@ qplot(parent, child, data = Galton)
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Predict Child Height Using the Galton Dataset'>
+        data-slide=1 title='NA'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Plot'>
+        data-slide=2 title='The Data'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Plot 2'>
+        data-slide=3 title='Using the App'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Test Slide 2'>
+        data-slide=4 title='Regression on Galton to get Prediction'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Using Regression on Galton to get Prediction'>
+        data-slide=5 title='Regression Plot'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Plot 2'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
       </a>
     </li>
   </ul>

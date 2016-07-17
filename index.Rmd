@@ -11,30 +11,91 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Predict Child Height Using the Galton Dataset
+<style type="text/css">
+body, td {
+   font-size: 14px;
+}
+code.r{
+  font-size: 14px;
+}
+pre {
+  font-size: 16px
+}
+</style>
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+## Overview
+<br/>
+The Child Height Predictor App allows users to input parents heights to get a prediction
+of a child's fully grown height.<br/>
+<br/>
 
---- .class #id 
+The app uses the Galton dataset from the HistData package.
 
-## Plot
+<br/>
+The dataset was compiled by Galton in the 1880, and was part of milestone breakthroughs
+in statistics including the discovery of the regression to the mean.
 
-```{r echo=FALSE,simple-plot1, fig.height = 8, fig.align = 'center', message = F}
-library(ggplot2)
+---
+
+## The Data
+
+The dataset consists of 928 rows of child and parent heights.
+
+The parents height is the mid-parent height which is the father's height plus the mother's height multiplied by 1.08.
+
+Galton multiplied female heights by 1.08. This includes the calcultion of the mid-parent height and in recording female children's heights.
+
+```{r}
 library(HistData)
+summary(Galton)
+
+```
+
+---
+
+## Using the App
+
+The user can change the parents heights using a slider for the mother's height and a slider for the father's height.
+
+The child's sex is entered via a dropdown box.
+
+The results panel shows the the calculated mid-parent height and the predicted child's height.
+
+The mid-parent height is calulated as the father's height + the mother's height * 1.08.
+
+The child's height is calculated using a regression model. 
+A child's predicted height is the intercept + the slope * the mid-parent height.
+
+For female children the result is divided by 1.08
+
+---
+
+## Regression on Galton to get Prediction
+
+<font size="4">
+```{r echo=TRUE}
+modelFit <- lm(Galton$child ~ Galton$parent)
+summary(modelFit) 
+```
+
+</font>
+
+---
+
+
+## Regression Plot
+
+```{r echo=FALSE,simple-plot1, fig.height = 6, fig.align = 'center', message = F}
+library(ggplot2)
+
 g <- ggplot(Galton,aes(parent,child))
 
 g + geom_point() + geom_smooth()
 
-#plot(Galton$child ~ Galton$parent)
-#abline(lm(child ~ parent,data=Galton))
+
 ```
 
-
 ---
-
 
 
 ## Plot 2
@@ -48,41 +109,4 @@ abline(lm(child ~ parent,data=Galton))
 ```
 
 ---
-
-## Test Slide 2
-
-This is test slide 2
-
----
-
-## Using Regression on Galton to get Prediction
-
-```{r echo=TRUE}
-
-lm(Galton$child ~ Galton$parent)
-
-
-```
-```{r echo=FALSE, simple-plot3, fig.height = 4, fig.align = 'center', message = F}
-
-plot(Galton$child ~ Galton$parent,main="Galton Regression",xlab="Parent",ylab="Child")
-abline(lm(child ~ parent,data=Galton))
-
-```
----
-
-## plot 4
-Lets create a simple plot
-
-```r
-require(ggplot2)
-qplot(parent, child, data = Galton)
-```
-![plot of chunk simple-plot](figure/simple-plot.png) 
----
-
-
-
-
-
 
